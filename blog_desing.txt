@@ -1,0 +1,88 @@
+Football blog. Visitors can read posts without logging in. Registered users can write blog posts, edit or delete their own posts, and leave comments under posts. Each post belongs to a specific category (e.g., “Champions League”, “Transfers”), and users can filter posts by these categories.
+
+Main Features:
+User Authentication:
+New users can register with a username, email, and password.
+
+Registered users can log in using their email and password.
+
+Users can log out to end their session.
+
+Posts:
+Logged-in users can create blog posts with a title, content, and category.
+
+Posts are linked to the author who created them.
+
+Users can edit or delete their own posts only.
+
+All posts are shown in reverse chronological order (newest first).
+
+Each post can be viewed in detail on its own page.
+
+Posts can be filtered by category or searched by keyword.
+
+Comments:
+Logged-in users can leave comments on any post.
+
+Each comment is tied to both the post and the user who wrote it.
+
+Users can delete their own comments, and admins may moderate comments if necessary.
+
+Categories:
+Each post belongs to one category.
+
+Categories help group posts by topic.
+
+Users can filter posts by selecting a specific category.
+
+Database Structure (Based on ER Diagram):
+The project uses four main tables:
+
+1. users
+Stores all registered users.
+
+id (int): primary key
+
+username (varchar): user's name
+
+email (varchar): login email
+
+password_hash (varchar): encrypted password
+
+created_at (datetime): registration date
+
+2. posts
+Stores blog articles written by users.
+
+id (int): primary key
+
+title (varchar): title of the post
+
+content (text): main body of the post
+
+author_id (int): foreign key to users.id
+
+category_id (int): foreign key to categories.id
+
+created_at (datetime): date and time the post was created
+
+3. comments
+Stores user comments on posts.
+
+id (int): primary key
+
+post_id (int): foreign key to posts.id
+
+user_id (int): foreign key to users.id
+
+content (text): comment content
+
+created_at (datetime): timestamp of the comment
+
+4. categories
+Stores the categories that posts can belong to.
+
+id (int): primary key
+
+name (varchar): category name (e.g., "World Cup", "Premier League")
+
